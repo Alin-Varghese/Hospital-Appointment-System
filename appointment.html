@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Appointment</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        🏥 Hospital System
+    </div>
+
+    <div class="nav-links">
+        <a href="doctors.html">Doctors</a>
+        <a href="appointment.html">Appointment</a>
+        <a href="dashboard.html">Dashboard</a>
+    </div>
+
+</nav>
+
+<div class="container">
+
+    <div class="banner">
+        <h1>Book Appointment</h1>
+        <p>Fill in your details below</p>
+    </div>
+
+    <div class="appointment-form">
+
+        <div class="input-group">
+            <label>Selected Doctor</label>
+            <input type="text" id="doctor" readonly>
+        </div>
+
+        <div class="input-group">
+            <label>Patient Name</label>
+            <input
+            type="text"
+            id="patient"
+            placeholder="Enter Patient Name">
+        </div>
+
+        <div class="input-group">
+            <label>Appointment Date</label>
+            <input
+            type="date"
+            id="date">
+        </div>
+
+        <div class="input-group">
+            <label>Symptoms</label>
+            <textarea
+            id="symptoms"
+            rows="4"
+            placeholder="Describe your symptoms"></textarea>
+        </div>
+
+        <button
+        class="btn"
+        onclick="bookAppointment()">
+        Confirm Appointment
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+document.getElementById("doctor").value =
+localStorage.getItem("selectedDoctor");
+
+function bookAppointment(){
+
+    let patient =
+    document.getElementById("patient").value;
+
+    let doctor =
+    document.getElementById("doctor").value;
+
+    let date =
+    document.getElementById("date").value;
+
+    let symptoms =
+    document.getElementById("symptoms").value;
+
+    if(
+        patient === "" ||
+        date === "" ||
+        symptoms === ""
+    ){
+        alert("Please fill all fields");
+        return;
+    }
+
+    let appointment = {
+
+        patient: patient,
+        doctor: doctor,
+        date: date,
+        symptoms: symptoms
+
+    };
+
+    let appointments =
+    JSON.parse(
+        localStorage.getItem("appointments")
+    ) || [];
+
+    appointments.push(appointment);
+
+    localStorage.setItem(
+        "appointments",
+        JSON.stringify(appointments)
+    );
+
+    alert("Appointment Booked Successfully!");
+
+    window.location.href =
+    "dashboard.html";
+
+}
+
+</script>
+
+</body>
+</html>

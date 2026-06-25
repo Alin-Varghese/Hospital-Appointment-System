@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doctors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        🏥 Hospital System
+    </div>
+
+    <div class="nav-links">
+        <a href="doctors.html">Doctors</a>
+        <a href="appointment.html">Appointment</a>
+        <a href="dashboard.html">Dashboard</a>
+    </div>
+
+</nav>
+
+<div class="container">
+
+    <div class="banner">
+        <h1>Our Specialists</h1>
+        <p>Find and book appointments with experienced doctors</p>
+    </div>
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search Doctor..."
+            onkeyup="searchDoctor()">
+
+        <select
+            id="departmentFilter"
+            onchange="filterDoctors()">
+
+            <option value="all">All Departments</option>
+            <option value="Cardiology">Cardiology</option>
+            <option value="Neurology">Neurology</option>
+            <option value="Orthopedics">Orthopedics</option>
+            <option value="Pediatrics">Pediatrics</option>
+            <option value="Dermatology">Dermatology</option>
+
+        </select>
+
+    </div>
+
+    <div class="doctor-grid">
+
+        <!-- Doctor 1 -->
+
+        <div class="doctor-card" data-department="Cardiology">
+
+            <img src="image.jpg" alt="Doctor">
+
+            <div class="doctor-info">
+
+                <h3>Dr. John Mathew</h3>
+
+                <p>Department: Cardiology</p>
+
+                <p>Experience: 10 Years</p>
+
+                <br>
+
+                <button class="btn"
+                onclick="bookDoctor('Dr. John Mathew')">
+                Book Appointment
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Doctor 2 -->
+
+        <div class="doctor-card" data-department="Cardiology">
+
+            <img src="image.jpg" alt="Doctor">
+
+            <div class="doctor-info">
+
+                <h3>Dr. Sarah Wilson</h3>
+
+                <p>Department: Cardiology</p>
+
+                <p>Experience: 8 Years</p>
+
+                <br>
+
+                <button class="btn"
+                onclick="bookDoctor('Dr. Sarah Wilson')">
+                Book Appointment
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Doctor 3 -->
+
+        <div class="doctor-card" data-department="Neurology">
+
+            <img src="image.jpg" alt="Doctor">
+
+            <div class="doctor-info">
+
+                <h3>Dr. Smith Johnson</h3>
+
+                <p>Department: Neurology</p>
+
+                <p>Experience: 12 Years</p>
+
+                <br>
+
+                <button class="btn"
+                onclick="bookDoctor('Dr. Smith Johnson')">
+                Book Appointment
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Doctor 4 -->
+
+        <div class="doctor-card" data-department="Neurology">
+
+            <img src="image.jpg" alt="Doctor">
+
+            <div class="doctor-info">
+
+                <h3>Dr. Emily Davis</h3>
+
+                <p>Department: Neurology</p>
+
+                <p>Experience: 9 Years</p>
+
+                <br>
+
+                <button class="btn"
+                onclick="bookDoctor('Dr. Emily Davis')">
+                Book Appointment
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Doctor 5 -->
+
+        <div class="doctor-card" data-department="Orthopedics">
+
+            <img src="image.jpg" alt="Doctor">
+
+            <div class="doctor-info">
+
+                <h3>Dr. David Thomas</h3>
+
+                <p>Department: Orthopedics</p>
+
+                <p>Experience: 11 Years</p>
+
+                <br>
+
+                <button class="btn"
+                onclick="bookDoctor('Dr. David Thomas')">
+                Book Appointment
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Doctor 6 -->
+
+        <div class="doctor-card" data-department="Orthopedics">
+
+            <img src="image.jpg" alt="Doctor">
+
+            <div class="doctor-info">
+
+                <h3>Dr. Michael George</h3>
+
+                <p>Department: Orthopedics</p>
+
+                <p>Experience: 7 Years</p>
+
+                <br>
+
+                <button class="btn"
+                onclick="bookDoctor('Dr. Michael George')">
+                Book Appointment
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Doctor 7 -->
+
+        <div class="doctor-card" data-department="Pediatrics">
+
+            <img src="image.jpg" alt="Doctor">
+
+            <div class="doctor-info">
+
+                <h3>Dr. Anna Joseph</h3>
+
+                <p>Department: Pediatrics</p>
+
+                <p>Experience: 6 Years</p>
+
+                <br>
+
+                <button class="btn"
+                onclick="bookDoctor('Dr. Anna Joseph')">
+                Book Appointment
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Doctor 8 -->
+
+        <div class="doctor-card" data-department="Pediatrics">
+
+            <img src="image.jpg" alt="Doctor">
+
+            <div class="doctor-info">
+
+                <h3>Dr. Kevin Roy</h3>
+
+                <p>Department: Pediatrics</p>
+
+                <p>Experience: 14 Years</p>
+
+                <br>
+
+                <button class="btn"
+                onclick="bookDoctor('Dr. Kevin Roy')">
+                Book Appointment
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Doctor 9 -->
+
+        <div class="doctor-card" data-department="Dermatology">
+
+            <img src="image.jpg" alt="Doctor">
+
+            <div class="doctor-info">
+
+                <h3>Dr. Rachel Martin</h3>
+
+                <p>Department: Dermatology</p>
+
+                <p>Experience: 10 Years</p>
+
+                <br>
+
+                <button class="btn"
+                onclick="bookDoctor('Dr. Rachel Martin')">
+                Book Appointment
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Doctor 10 -->
+
+        <div class="doctor-card" data-department="Dermatology">
+
+            <img src="image.jpg" alt="Doctor">
+
+            <div class="doctor-info">
+
+                <h3>Dr. Chris Paul</h3>
+
+                <p>Department: Dermatology</p>
+
+                <p>Experience: 8 Years</p>
+
+                <br>
+
+                <button class="btn"
+                onclick="bookDoctor('Dr. Chris Paul')">
+                Book Appointment
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function searchDoctor(){
+
+    let input =
+    document.getElementById("searchInput")
+    .value.toLowerCase();
+
+    let cards =
+    document.querySelectorAll(".doctor-card");
+
+    cards.forEach(card => {
+
+        let text =
+        card.innerText.toLowerCase();
+
+        if(text.includes(input)){
+            card.style.display = "block";
+        }
+        else{
+            card.style.display = "none";
+        }
+
+    });
+
+}
+
+function filterDoctors(){
+
+    let department =
+    document.getElementById("departmentFilter")
+    .value;
+
+    let cards =
+    document.querySelectorAll(".doctor-card");
+
+    cards.forEach(card => {
+
+        if(
+            department === "all" ||
+            card.dataset.department === department
+        ){
+            card.style.display = "block";
+        }
+        else{
+            card.style.display = "none";
+        }
+
+    });
+
+}
+
+function bookDoctor(name){
+
+    localStorage.setItem(
+        "selectedDoctor",
+        name
+    );
+
+    window.location.href =
+    "appointment.html";
+
+}
+
+</script>
+
+</body>
+</html>

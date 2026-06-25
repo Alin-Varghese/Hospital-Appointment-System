@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        🏥 Hospital System
+    </div>
+
+    <div class="nav-links">
+        <a href="doctors.html">Doctors</a>
+        <a href="appointment.html">Appointment</a>
+        <a href="dashboard.html">Dashboard</a>
+    </div>
+
+</nav>
+
+<div class="container">
+
+    <div class="banner">
+        <h1>Patient Dashboard</h1>
+        <p>Manage your appointments</p>
+    </div>
+
+    <div class="stats">
+
+        <div class="stat-card">
+            <h2>Total Appointments</h2>
+            <p id="appointmentCount">0</p>
+        </div>
+
+        <div class="stat-card">
+            <h2>Patient</h2>
+            <p id="username">Guest</p>
+        </div>
+
+    </div>
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>Patient</th>
+                <th>Doctor</th>
+                <th>Date</th>
+                <th>Symptoms</th>
+                <th>Action</th>
+            </tr>
+
+        </thead>
+
+        <tbody id="appointmentTable">
+
+        </tbody>
+
+    </table>
+
+    <br>
+
+    <button
+    class="btn btn-danger"
+    onclick="logout()">
+    Logout
+    </button>
+
+</div>
+
+<script>
+
+let appointments =
+JSON.parse(
+localStorage.getItem("appointments")
+) || [];
+
+document.getElementById("appointmentCount")
+.innerHTML = appointments.length;
+
+let user =
+JSON.parse(
+localStorage.getItem("user")
+);
+
+if(user){
+
+document.getElementById("username")
+.innerHTML = user.username;
+
+}
+
+let table =
+document.getElementById("appointmentTable");
+
+appointments.forEach((appointment,index)=>{
+
+let row =
+
+`
+<tr>
+
+<td>${appointment.patient}</td>
+
+<td>${appointment.doctor}</td>
+
+<td>${appointment.date}</td>
+
+<td>${appointment.symptoms}</td>
+
+<td>
+
+<button
+class="btn btn-danger"
+onclick="deleteAppointment(${index})">
+
+Delete
+
+</button>
+
+</td>
+
+</tr>
+`;
+
+table.innerHTML += row;
+
+});
+
+function deleteAppointment(index){
+
+appointments.splice(index,1);
+
+localStorage.setItem(
+"appointments",
+JSON.stringify(appointments)
+);
+
+location.reload();
+
+}
+
+function logout(){
+
+localStorage.removeItem("user");
+
+window.location.href =
+"index.html";
+
+}
+
+</script>
+
+</body>
+</html>
